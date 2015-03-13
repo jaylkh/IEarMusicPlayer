@@ -121,7 +121,7 @@ public class MainFragment extends Fragment implements IConstants,
 				R.drawable.icon_favorites, R.drawable.icon_folder_plus,
 				R.drawable.icon_artist_plus, R.drawable.icon_album_plus ,R.drawable.icon_iear_device};
 		private String[] name = new String[] { "我的音乐", "我的最爱", "文件夹", "歌手",
-				"专辑" ,"我的iEar"};
+				"专辑" ,"iEar"};
 		private int musicNum = 0, artistNum = 0, albumNum = 0, folderNum = 0, favoriteNum = 0,deviceNum=0;
 
 		@Override

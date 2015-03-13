@@ -84,7 +84,7 @@ public class DeviceBrowserManager extends MainUIManager implements IConstants, O
 
 	private void initBg(View view) {
 		mFolderLayout = (RelativeLayout) view
-				.findViewById(R.id.main_folder_layout);//获得文件夹主界面的主体布局
+				.findViewById(R.id.main_device_layout);//获得文件夹主界面的主体布局
 		SPStorage mSp = new SPStorage(mActivity);
 		String mDefaultBgPath = mSp.getPath();
 		Bitmap bitmap = mUIManager.getBitmapByPath(mDefaultBgPath);
