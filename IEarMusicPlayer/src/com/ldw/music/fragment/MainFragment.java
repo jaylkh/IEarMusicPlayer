@@ -119,10 +119,10 @@ public class MainFragment extends Fragment implements IConstants,
 
 		private int[] drawable = new int[] { R.drawable.icon_local_music,
 				R.drawable.icon_favorites, R.drawable.icon_folder_plus,
-				R.drawable.icon_artist_plus, R.drawable.icon_album_plus };
+				R.drawable.icon_artist_plus, R.drawable.icon_album_plus ,R.drawable.icon_iear_device};
 		private String[] name = new String[] { "我的音乐", "我的最爱", "文件夹", "歌手",
-				"专辑" };
-		private int musicNum = 0, artistNum = 0, albumNum = 0, folderNum = 0, favoriteNum = 0;
+				"专辑" ,"我的iEar"};
+		private int musicNum = 0, artistNum = 0, albumNum = 0, folderNum = 0, favoriteNum = 0,deviceNum=0;
 
 		@Override
 		public int getCount() {
@@ -185,6 +185,9 @@ public class MainFragment extends Fragment implements IConstants,
 			case 4:// 专辑
 				holder.numTv.setText(albumNum + "");
 				break;
+			case 5:// 专辑
+				holder.numTv.setText(deviceNum + "");
+				break;
 			}
 
 			convertView.setOnClickListener(new View.OnClickListener() {
@@ -207,6 +210,9 @@ public class MainFragment extends Fragment implements IConstants,
 						break;
 					case 4:// 专辑
 						from = START_FROM_ALBUM;
+						break;
+					case 5://我的设备
+						from = START_FROM_DEVICE;
 						break;
 					}
 					mUIManager.setContentType(from);

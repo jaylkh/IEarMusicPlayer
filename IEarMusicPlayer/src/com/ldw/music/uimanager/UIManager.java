@@ -23,6 +23,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import com.ldw.music.R;
 import com.ldw.music.activity.IConstants;
 import com.ldw.music.activity.MainContentActivity;
 import com.ldw.music.activity.MainContentActivity.OnBackListener;
+import com.ldw.music.model.DeviceInfo;
 import com.ldw.music.storage.SPStorage;
 
 /**
@@ -165,6 +167,20 @@ public class UIManager implements IConstants, OnBackListener {
 		// 注册监听返回按钮
 		mMainActivity.registerBackListener(this);
 		switch (type) {
+		case START_FROM_DEVICE://我的设备
+			mMainUIManager = new DeviceBrowserManager(mActivity,this);
+			View transView0 = mInflater.inflate(
+					R.layout.viewpager_trans_layout, null);
+			View contentView0 = mMainUIManager.getView();
+			mViewPager.setVisibility(View.VISIBLE);
+			mListViews.clear();
+			mViewPager.removeAllViews();
+			
+			mListViews.add(transView0);
+			mListViews.add(contentView0);
+			mViewPager.setAdapter(new MyPagerAdapter(mListViews));
+			mViewPager.setCurrentItem(1, true);
+			break;
 		case START_FROM_LOCAL://本地音乐
 			mMainUIManager = new MyMusicManager(mActivity, this);
 			View transView1 = mInflater.inflate(
@@ -280,6 +296,10 @@ public class UIManager implements IConstants, OnBackListener {
 			mViewPagerSub.setAdapter(new MyPagerAdapter(mListViewsSub));
 			mViewPagerSub.setCurrentItem(1, true);
 			break;
+		case DEVICE_TO_REMOTCONTROL:
+			DeviceInfo device = (DeviceInfo) obj;
+			Log.e("jaylkh", "select: "+device.name+" mac: "+device.macAdr);
+			break;
 		}
 	}
 
@@ -325,6 +345,7 @@ public class UIManager implements IConstants, OnBackListener {
 				mMainActivity.unRegisterBackListener(UIManager.this);
 				mViewPager.removeAllViews();
 				mViewPager.setVisibility(View.INVISIBLE);
+				Log.e("jaylkh", "In UiManager: mViewPager clear all view and set to invisible");
 				if (mRefreshListener != null) {
 					mRefreshListener.onRefresh();
 				}

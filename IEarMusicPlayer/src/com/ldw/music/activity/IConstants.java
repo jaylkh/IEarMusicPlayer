@@ -57,5 +57,7 @@ public interface IConstants {
 	public static final int ARTIST_TO_MYMUSIC = 8;
 	
 	public static final int MENU_BACKGROUND = 9;
+	public static final int START_FROM_DEVICE=10;//设备
+	public static final int DEVICE_TO_REMOTCONTROL=11;//从设备列表到远程控制页面
 	
 }
