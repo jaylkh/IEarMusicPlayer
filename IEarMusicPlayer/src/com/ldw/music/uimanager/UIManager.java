@@ -61,6 +61,8 @@ public class UIManager implements IConstants, OnBackListener {
 	private RelativeLayout mMainLayout;
 	private ChangeBgReceiver mReceiver;//更换背景广播接收者
 	private MainUIManager mMainUIManager;//UI管理器，在具体的单击事件中进行实例化
+	//ViewPager中第3页开始所有的view的Manager
+	private List<RemoteManager> mRemoteManagerList = new ArrayList<RemoteManager>();
 //	private SPStorage mSp;
 //	private String mDefaultBgPath;
 
@@ -122,6 +124,13 @@ public class UIManager implements IConstants, OnBackListener {
 			if(mMainUIManager != null) {
 				mMainUIManager.setBgByPath(path);
 			}
+			if(mRemoteManagerList.size()>0)
+			{
+				for(RemoteManager rm: mRemoteManagerList)
+				{
+					rm.setBgByPath(path);
+				}
+			}
 		}
 	}
 	
@@ -158,6 +167,10 @@ public class UIManager implements IConstants, OnBackListener {
 	public void setCurrentItem() {
 		if (mViewPagerSub.getChildCount() > 0) {
 			mViewPagerSub.setCurrentItem(0, true);
+			if(mRemoteManagerList.size()>0)//清除远程view manager列表
+			{
+				mRemoteManagerList.clear();
+			}
 		} else {
 			mViewPager.setCurrentItem(0, true);
 		}
@@ -296,9 +309,28 @@ public class UIManager implements IConstants, OnBackListener {
 			mViewPagerSub.setAdapter(new MyPagerAdapter(mListViewsSub));
 			mViewPagerSub.setCurrentItem(1, true);
 			break;
-		case DEVICE_TO_REMOTCONTROL:
+		case DEVICE_TO_REMOTCONTROL://从设备列表跳转到远程设备控制，音乐播放，wifi配置，音乐推送等
 			DeviceInfo device = (DeviceInfo) obj;
 			Log.e("jaylkh", "select: "+device.name+" mac: "+device.macAdr);
+			RemoteMusicManager rmm = new RemoteMusicManager(mActivity, this);
+			RemoteWifiManager rwm = new RemoteWifiManager(mActivity, this);
+			RemoteWifiTransferManager rwfm = new RemoteWifiTransferManager(mActivity, this);
+		    mRemoteManagerList.add(rmm);
+		    mRemoteManagerList.add(rwm);
+		    mRemoteManagerList.add(rwfm); 
+			
+			mViewPagerSub.setVisibility(View.VISIBLE);	
+			mListViewsSub.clear();
+			mViewPagerSub.removeAllViews();
+
+			View transViewSub4 = mInflater.inflate(
+					R.layout.viewpager_trans_layout, null); 
+			mListViewsSub.add(transViewSub4);
+			mListViewsSub.add(rmm.getView());
+			mListViewsSub.add(rwm.getView());
+			mListViewsSub.add(rwfm.getView());
+			mViewPagerSub.setAdapter(new MyPagerAdapter(mListViewsSub));
+			mViewPagerSub.setCurrentItem(1, true);
 			break;
 		}
 	}
@@ -397,6 +429,10 @@ public class UIManager implements IConstants, OnBackListener {
 	public void onBack() {
 		if (mViewPagerSub.isShown()) {
 			mViewPagerSub.setCurrentItem(0, true);
+			if(mRemoteManagerList.size()>0)//清除远程view manager列表
+			{
+				mRemoteManagerList.clear();
+			}
 		} else if (mViewPager.isShown()) {
 			mViewPager.setCurrentItem(0, true);
 		}

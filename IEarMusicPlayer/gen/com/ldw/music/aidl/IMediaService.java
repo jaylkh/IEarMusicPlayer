@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\worke\\android\\EarPhone\\IEarMusicPlayer\\src\\com\\ldw\\music\\aidl\\IMediaService.aidl
+ * Original file: E:\\GitHub\\IEarMusicPlayer\\IEarMusicPlayer\\src\\com\\ldw\\music\\aidl\\IMediaService.aidl
  */
 package com.ldw.music.aidl;
 public interface IMediaService extends android.os.IInterface

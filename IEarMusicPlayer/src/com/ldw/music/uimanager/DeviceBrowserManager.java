@@ -77,7 +77,11 @@ public class DeviceBrowserManager extends MainUIManager implements IConstants, O
 		DeviceInfo info = new DeviceInfo();
 		info.name ="iEar";
 		info.macAdr="ef6c::ba4c::4532::acef";
-		list.add(info);
+		
+		DeviceInfo info1 = new DeviceInfo();
+		info1.name ="iEarPhone";
+		info1.macAdr="ef6c::ba4c::4532::acef";
+		list.add(info1);
 		mAdapter.notifyDataSetChanged();
 		Log.e("jaylkh", "Device brower init done!");
 	}
@@ -94,9 +98,30 @@ public class DeviceBrowserManager extends MainUIManager implements IConstants, O
 		}
 	}
 
-	
-	
-	
+	/**
+	 * 设置设备列表数据
+	 * @param deviceList
+	 */
+	public void setDevicesList(List<DeviceInfo> deviceList)
+	{
+		this.list = deviceList;
+		if(mAdapter!=null)
+		{
+			mAdapter.notifyDataSetChanged();
+		}
+	}
+	/**
+	 * 添加单个设备到列表中
+	 * @param device
+	 */
+	public void addDeviceToList(DeviceInfo device)
+	{
+		this.list.add(device);
+		if(mAdapter!=null)
+		{
+			mAdapter.notifyDataSetChanged();
+		}
+	}
 	
 	
 	

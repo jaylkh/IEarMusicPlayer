@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_remotewifi_transfer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@color/half_transparent" >
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_music_btn"
+            android:padding="10dip"
+            android:src="@drawable/icon_back" />
+
+        <TextView
+            android:id="@+id/topTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="文件列表"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_sp" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:background="@color/transparent"
+            android:layout_marginRight="10dp" >
+
+            <ImageButton
+                android:id="@+id/checkbox_normal_ib"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:src="@drawable/checkbox_normal" />
+            
+            <ImageButton
+                android:id="@+id/checkbox_checked_ib"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:visibility="invisible"
+                android:src="@drawable/checkbox_checked" />
+            
+            
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="2dp"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/splitline" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            
+             >
+
+            <ImageButton
+                android:id="@+id/selected_imgbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_wifitransfer_btn"
+                android:src="@drawable/icon_menu_point" />
+
+            <ImageButton
+                android:id="@+id/transfer_imgbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_wifitransfer_btn"
+                android:src="@drawable/icon_wifitransfer3" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/transfer_lv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottomLayout"
+        android:layout_below="@id/topLayout"
+        android:divider="@color/divider_color"
+        android:dividerHeight="0.5dip"
+        android:scrollbars="none" />
+
+</RelativeLayout>

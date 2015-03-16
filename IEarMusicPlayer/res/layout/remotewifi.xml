@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_remotewifi_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@color/half_transparent" >
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_music_btn"
+            android:padding="10dip"
+            android:src="@drawable/icon_back" />
+
+        <TextView
+            android:id="@+id/topTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="wifi列表"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_sp" />
+
+        <ImageButton
+            android:id="@+id/refreshBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_music_btn"
+            android:padding="10.0dip"
+            android:src="@drawable/icon_refresh" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"        
+        android:background="@color/half_transparent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"        
+         />
+
+    <ListView
+        android:id="@+id/wifi_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/imageView1"
+        android:layout_below="@id/topLayout"
+        android:divider="@color/divider_color"
+        android:dividerHeight="0.5dip"
+        android:scrollbars="none" />
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/music_head_icon"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/music_head_normal_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/icon_music_head_normal" />
+
+        <ImageView
+            android:id="@+id/music_head_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/icon_music_head"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/music_head_icon"
+        android:layout_marginLeft="10dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/musicName_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wifi ssid"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/artist_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="state"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/selected_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/icon_wifitransfer_checked"
+        android:visibility="invisible" />
+
+</RelativeLayout>
